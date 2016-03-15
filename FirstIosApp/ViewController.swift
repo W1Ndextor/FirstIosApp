@@ -13,6 +13,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //creating instance of jokes class keyword let will not allow this object to be changed...for changabe objects use var
+        let jokes = Jokes()
+        for joke in jokes.jokes{
+            print(joke)
+        }
     }
 
     override func didReceiveMemoryWarning() {
