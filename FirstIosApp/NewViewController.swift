@@ -14,6 +14,18 @@ class NewViewController: UIViewController {
     
     var tipToShow = ""
     
+    @IBAction func goToTableView(sender: UIButton) {
+        
+        performSegueWithIdentifier("GoToTableView", sender: nil)
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "GoToTableView" {
+            _ = segue.destinationViewController as? NewTableViewController
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tipLabel.text = tipToShow
