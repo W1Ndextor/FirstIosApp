@@ -12,7 +12,32 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var monsterImageView: UIImageView!
     
+    @IBOutlet weak var tipPercentTextField: UITextField!
+    
+    @IBOutlet weak var amountTextField: UITextField!
+    
     var monsters = ["Astro", "Fluffy", "Munchie", "Squido"]
+    
+    @IBOutlet weak var tipLabel: UILabel!
+    
+    
+    @IBAction func calculateTip(sender: UIButton) {
+        var tip = 0.0
+        var dAmount = 0.0
+        var dPercent = 0.0
+        //let allows us to creat immutable variables, here they are amount and percent we are storing atever text is being put into the text fields
+        
+        //anything that is out into the ui is treated as a string so...
+        if let amount = amountTextField.text, percent = tipPercentTextField.text {
+            //...we convert them to doubles
+            //the ! is there because the ib outlets for amount and percent textfields are weak
+            dAmount = Double(amount)!
+            dPercent = Double(percent)!
+            tip = dAmount * dPercent
+        }
+        //update label text
+        tipLabel.text = "Tip is $\(String(tip))"
+    }
     
     
     override func viewDidLoad() {
